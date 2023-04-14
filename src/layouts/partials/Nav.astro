@@ -1,0 +1,112 @@
+---
+import { Icon } from "astro-icon";
+import Logo from "@/layouts/partials/Logo.astro";
+import navigation from "@/utils/navigation";
+import type { Link, Router } from "@/router";
+
+const { title } = Astro.props;
+---
+
+<div id="navigation" class="hide transparent">
+  <nav id="nav" class="hide">
+    <!-- header -->
+    <div class="mb-8 flex items-center justify-between gap-4 md:hidden">
+      <Logo title={title} />
+      <button
+        id="hide-nav"
+        class="flex h-8 w-8 items-center justify-center rounded-md transition-all duration-200 hover:bg-neutral-200 dark:hover:bg-neutral-800"
+        aria-label="Close navigation"
+      >
+        <Icon name="ph:x-bold" class="h-5 w-5" />
+      </button>
+    </div>
+    <!-- content -->
+    <ul class="flex flex-col gap-4">
+      {
+        navigation.map((item: Router) => (
+          <li class="flex flex-col gap-2">
+            <p class="text-xs font-bold uppercase">{item.name}</p>
+            {item.children?.length ? (
+              <ul class="flex flex-col gap-2">
+                {item.children.map((child: Link) => (
+                  <li>
+                    <a
+                      href={`${item.path}${child.path}`}
+                      class="text-sm capitalize text-neutral-500 dark:text-neutral-400"
+                    >
+                      {child.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</div>
+
+<script>
+  const navigation = document.getElementById("navigation");
+  const nav = document.getElementById("nav");
+  const showNav = document.getElementById("show-nav") as HTMLInputElement;
+  const hideNav = document.getElementById("hide-nav") as HTMLInputElement;
+  const show = () => {
+    navigation?.classList.remove("hide");
+    setTimeout(() => {
+      nav?.classList.remove("hide");
+      navigation?.classList.remove("transparent");
+    }, 0);
+  };
+  const hide = () => {
+    nav?.classList.add("hide");
+    navigation?.classList.add("transparent");
+    setTimeout(() => {
+      navigation?.classList.add("hide");
+    }, 300);
+  };
+
+  showNav?.addEventListener("click", () => {
+    if (showNav.disabled) return;
+    showNav.disabled = true;
+    setTimeout(() => {
+      showNav.disabled = false;
+    }, 300);
+    show();
+  });
+
+  hideNav?.addEventListener("click", () => {
+    if (hideNav.disabled) return;
+    hideNav.disabled = true;
+    setTimeout(() => {
+      hideNav.disabled = false;
+    }, 300);
+    hide();
+  });
+
+  navigation?.addEventListener("click", (event) => {
+    if (event.target === navigation && !showNav.disabled) hide();
+  });
+</script>
+
+<style lang="scss">
+  #navigation {
+    @apply absolute left-0 top-0 z-10 h-full w-full bg-black/50 transition-all duration-300 ease-in-out md:static md:max-w-[320px] md:transition-none;
+
+    nav {
+      @apply absolute left-0 top-0 h-full w-full max-w-[320px] bg-white p-4 shadow-lg transition-all duration-300 ease-in-out dark:bg-zinc-900 md:static md:shadow-none md:transition-none;
+
+      &.hide {
+        @apply -left-[320px];
+      }
+    }
+
+    &.hide {
+      @apply hidden md:block;
+    }
+    &.transparent {
+      @apply bg-black/0;
+    }
+  }
+</style>

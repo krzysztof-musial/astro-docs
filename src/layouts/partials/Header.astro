@@ -1,0 +1,29 @@
+---
+import { Icon } from "astro-icon";
+import Logo from "@/layouts/partials/Logo.astro";
+import Theme from "@/layouts/partials/Theme.astro";
+
+const { title } = Astro.props;
+---
+
+<header>
+  <Logo title={title} />
+  <div class="flex items-center gap-2">
+    <Theme />
+    <button
+      id="show-nav"
+      class="flex h-8 w-8 items-center justify-center rounded-md transition-all duration-200 hover:bg-neutral-200 dark:hover:bg-neutral-800 md:hidden"
+      aria-label="Open navigation"
+    >
+      <Icon name="charm:menu-hamburger" class="h-5 w-5" />
+    </button>
+  </div>
+</header>
+
+<script></script>
+
+<style lang="scss">
+  header {
+    @apply flex items-center justify-between p-4;
+  }
+</style>

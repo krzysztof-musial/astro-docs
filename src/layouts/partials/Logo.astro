@@ -1,0 +1,14 @@
+---
+import { Icon } from "astro-icon";
+
+const { title } = Astro.props;
+---
+
+<a href="/" class="group flex items-center gap-2">
+  <Icon
+    name="fluent:document-one-page-24-filled"
+    class="h-6 w-6 text-emerald-400 dark:text-emerald-400"
+  />
+  <!-- class="h-6 w-6 text-emerald-400 transition-transform duration-1000 group-hover:rotate-90 dark:text-emerald-400" -->
+  <p class="font-bold">{title}</p>
+</a>

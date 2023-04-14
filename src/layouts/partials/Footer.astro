@@ -1,0 +1,17 @@
+---
+import Logo from '@/layouts/partials/Logo.astro'
+
+const { title } = Astro.props;
+---
+
+<footer>
+  <Logo title={title} />
+  <p>Column 2</p>
+  <p>Column 3</p>
+</footer>
+
+<style lang="scss">
+  footer {
+    @apply p-4 grid grid-cols-1 md:grid-cols-3 gap-4;
+  }
+</style>

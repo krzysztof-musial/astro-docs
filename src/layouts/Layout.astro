@@ -1,0 +1,62 @@
+---
+import Header from "@/layouts/partials/Header.astro";
+import Footer from "@/layouts/partials/Footer.astro";
+import Nav from "@/layouts/partials/Nav.astro";
+import Article from "@/layouts/partials/Article.astro";
+
+const { frontmatter } = Astro.props;
+const title = "Documentation";
+const description = "Documentation for Astro";
+
+// const pages = await Astro.glob('../pages/*/*.{md,mdx}');
+// console.log(pages)
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} - {frontmatter.title}</title>
+    <meta name="description" content={frontmatter.description || description} />
+  </head>
+  <body>
+    <div class="layout compact">
+      <Header title={title} />
+      <main>
+        <Nav title={title} />
+        <Article>
+          <slot />
+        </Article>
+      </main>
+      <Footer title={title} />
+    </div>
+  </body>
+</html>
+
+<style lang="scss">
+  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+  * {
+    font-family: "Inter", sans-serif;
+  }
+
+  body {
+    @apply bg-white text-black dark:bg-zinc-900 dark:text-white;
+  }
+
+  .layout {
+    @apply min-h-screen w-full;
+    display: grid;
+    grid-template-rows: min-content auto min-content;
+
+    &.compact {
+      @apply m-auto max-w-screen-xl;
+    }
+
+    main {
+      @apply flex gap-4;
+    }
+  }
+</style>

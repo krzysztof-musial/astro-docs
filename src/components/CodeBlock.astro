@@ -1,0 +1,56 @@
+---
+// import { Code } from "astro/components";
+
+const props = Astro.props;
+const html = await Astro.slots.render("default");
+// const doc = html.replaceAll(">", ">|").split("|");
+
+// let countLines = 0;
+// doc.forEach((item, index) => {
+//   if (item.includes("line")) {
+//     doc[index] = item.replace("line", "line block");
+//     countLines++;
+
+//     if (props.highlight && props.highlight.includes(countLines)) {
+//       doc[index] = item.replace(
+//         "line",
+//         "line -mx-4 block bg-sky-300/[0.15] pl-3 pr-5 border-l-4 border-sky-400"
+//       );
+//     }
+
+//     if (props.inserted && props.inserted.includes(countLines)) {
+//       doc[index] = item.replace(
+//         "line",
+//         "line -mx-4 block bg-green-300/[0.15] pl-3 pr-5 border-l-4 border-green-400 before:content-['+'] before:mr-2 before:text-green-400"
+//       );
+//     }
+
+//     if (props.deleted && props.deleted.includes(countLines)) {
+//       doc[index] = item.replace(
+//         "line",
+//         "line -mx-4 block bg-red-300/[0.15] pl-3 pr-5 border-l-4 border-red-400 before:content-['-'] before:mr-2 before:text-red-400"
+//       );
+//     }
+//   }
+// });
+
+// doc[0] = doc[0].replace(
+//   ' style="background-color:#0d1117;overflow-x:auto"',
+//   ""
+// );
+// doc[0] = doc[0].replace(
+//   "astro-code",
+//   "astro-code dark:bg-neutral-900 my-0 rounded-none"
+// );
+// console.log(doc);
+---
+
+<!-- <div set:html={doc.join("").replaceAll("\n", "")} /> -->
+<div set:html={html} />
+
+<!-- <div class="overflow-x-auto dark:hidden">
+  <Code code={html} lang="js" theme="github-light" />
+</div>
+<div class="hidden overflow-x-auto dark:block">
+  <Code code={html} lang="js" theme="github-dark" />
+</div> -->

@@ -1,0 +1,137 @@
+---
+title: "Markdown Cheat Sheet"
+layout: "@/layouts/Layout.astro"
+---
+
+import CodeGroup from "@/components/CodeGroup.astro";
+import CodeBlock from "@/components/CodeBlock.astro";
+
+# Markdown Cheat Sheet
+
+## Markdown Cheat Sheet
+
+### Markdown Cheat Sheet
+
+#### Markdown Cheat Sheet
+
+##### Markdown Cheat Sheet
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerier.
+
+## CodeGroup
+
+<CodeGroup title="index.html">
+
+```js {1-2,4}
+const test = {
+  content: [
+    // Example content paths...
+    "./public/**/*.html",
+    "./src/**/*.{js,jsx,ts,tsx,vue}",
+  ],
+  theme: {
+    // ...
+  },
+  // ...
+};
+```
+
+```php /foo/2
+$foo = 'bar';
+$bar = 'foo';
+$baz = $foo . $bar;
+echo $baz;
+```
+
+</CodeGroup>
+
+---
+
+## Paragraphs
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerier.
+
+---
+
+## Emphasis
+
+_This text will be italic_
+
+_This will also be italic_
+
+**This text will be bold**
+
+**This will also be bold**
+
+_You **can** combine them_
+
+---
+
+## Lists
+
+### Unordered
+
+- Item 1
+- Item 2
+  - Item 2a
+  - Item 2b
+
+### Ordered
+
+1. Item 1
+1. Item 2
+1. Item 3
+   1. Item 3a
+   1. Item 3b
+
+---
+
+## Links
+
+http://github.com - automatic!
+
+[GitHub](http://github.com)
+
+---
+
+## Blockquotes
+
+As Kanye West said:
+
+> We're living the future so
+> the present is our past.
+
+---
+
+## Inline code
+
+I think you should use an
+`<addr>` element here instead.
+
+---
+
+## Syntax highlighting
+
+```mermaid
+graph LR
+    Start --> Stop
+```
+
+---
+
+## Tables
+
+| Syntax    | Description |
+| --------- | ----------- |
+| Header    | Title       |
+| Paragraph | Text        |
+
+---
+
+## Task Lists
+
+- [x] list syntax required (any unordered or ordered list supported)
+- [x] this is a complete item
+- [ ] this is an incomplete item
+
+---

@@ -1,0 +1,62 @@
+---
+import { Icon } from "astro-icon";
+---
+
+<button
+  id="toggle-theme"
+  class="flex h-8 w-8 items-center justify-center rounded-md transition-all duration-200 hover:bg-neutral-200 dark:hover:bg-neutral-800"
+  aria-label="Toggle color theme"
+>
+  <Icon name="ph:moon-fill" class="h-5 w-5 dark:hidden" />
+  <Icon name="ph:sun-dim-fill" class="hidden h-5 w-5 dark:inline" />
+</button>
+
+<script is:inline>
+  const themeButton = document.getElementById("toggle-theme");
+  const theme = localStorage.getItem("theme");
+  const prefersLight = window.matchMedia(
+    "(prefers-color-scheme: light)"
+  ).matches;
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  const setTheme = (theme) => {
+    localStorage.setItem("theme", theme);
+    document.documentElement.classList.remove("light");
+    document.documentElement.classList.remove("dark");
+    document.documentElement.classList.add(theme);
+  };
+
+  console.log("prefersLight", prefersLight);
+  console.log("prefersDark", prefersDark);
+
+  if (!theme) {
+    if (prefersDark) {
+      console.log("prefers dark");
+      setTheme("dark");
+    } else if (prefersLight) {
+      console.log("prefers light");
+      setTheme("light");
+    } else {
+      setTheme("light");
+    }
+  } else if (theme === "light") {
+    console.log("light");
+    setTheme("light");
+  } else if (theme === "dark") {
+    console.log("dark");
+    setTheme("dark");
+  } else {
+    console.log("default");
+    setTheme("light");
+  }
+
+  themeButton?.addEventListener("click", () => {
+    if (document.documentElement.classList.contains("light")) {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+  });
+</script>
+
+<style lang="scss"></style>
